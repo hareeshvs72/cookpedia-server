@@ -11,5 +11,8 @@ routes.get('/all-recipes',recipeController.getallRecipesController)
 
 routes.post('/register',userController.registerController)
 
+// login 
+routes.post('/login',userController.loginController)
+
 
 module.exports = routes
