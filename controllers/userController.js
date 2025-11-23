@@ -46,11 +46,11 @@ exports.loginController = async (req, res)=>{
                 res.status(200).json({ user: existingUser, token })
 
             } else {
-                res.status(404).json("invalid username or password")
+                res.status(401).json("invalid username or password")
             }
         }
         else {
-            res.status(200).json("Invali Email Please Reigter To access our app")
+            res.status(404).json("Invali Email Please Reigter To access our app")
         }
 
 
