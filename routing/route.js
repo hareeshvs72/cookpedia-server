@@ -3,7 +3,7 @@ const routes = express.Router()
 const recipeController = require("../controllers/recipeController")
 const userController = require('../controllers/userController')
 const jwtMiddleWare = require("../middleWare/jwtMiddleWare")
-
+const downloadController = require('../controllers/downloadController')
 
 // --------------------------- user --------------------------------
 // register 
@@ -26,6 +26,8 @@ routes.get('/recipes/:id/view',jwtMiddleWare,recipeController.viewRecipeControll
 
 routes.get('/related-recipes',jwtMiddleWare,recipeController.relatedRecipesController)
 
+// ----------------------------download -------------------------------
 
+routes.put('/recipes/:id/download',jwtMiddleWare,downloadController.addToDownloadController)
 
 module.exports = routes
