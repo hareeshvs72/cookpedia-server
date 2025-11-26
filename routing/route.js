@@ -4,7 +4,7 @@ const recipeController = require("../controllers/recipeController")
 const userController = require('../controllers/userController')
 const jwtMiddleWare = require("../middleWare/jwtMiddleWare")
 const downloadController = require('../controllers/downloadController')
-
+const saveRecipeController = require('../controllers/saveRecipeController')
 // --------------------------- user --------------------------------
 // register 
 
@@ -29,5 +29,16 @@ routes.get('/related-recipes',jwtMiddleWare,recipeController.relatedRecipesContr
 // ----------------------------download -------------------------------
 
 routes.put('/recipes/:id/download',jwtMiddleWare,downloadController.addToDownloadController)
+
+// save recipe or colection 
+
+routes.post('/recipes/:id/save',jwtMiddleWare,saveRecipeController.addSaveRecipeController)
+
+// get all save recipies
+
+routes.get('/recipes/save',jwtMiddleWare,saveRecipeController.getAllUserSaveRecipeController)
+// delet recipe
+
+routes.delete('/recipes/:id/remove',jwtMiddleWare,saveRecipeController.deleteRecipeController)
 
 module.exports = routes
