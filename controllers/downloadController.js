@@ -31,3 +31,16 @@ exports.addToDownloadController = async (req,res)=>{
     }
     
 }
+
+exports.userDownloadedListController = async (req,res)=>{
+    console.log("insid userDownloadedListController");
+    
+  const  userMail = req.payload
+  try {
+    const  alluserDownloadedList = await downloads.find({userMail})
+    res.status(200).json(alluserDownloadedList)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+

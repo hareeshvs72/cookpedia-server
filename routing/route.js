@@ -13,6 +13,9 @@ routes.post('/register',userController.registerController)
 // login 
 routes.post('/login',userController.loginController)
 
+// update user profile
+
+routes.put('/user/:id/edit',jwtMiddleWare,userController.updateUSerController)
 
 // --------------------- recipie  -----------------------------------
 // get all recipies
@@ -29,6 +32,10 @@ routes.get('/related-recipes',jwtMiddleWare,recipeController.relatedRecipesContr
 // ----------------------------download -------------------------------
 
 routes.put('/recipes/:id/download',jwtMiddleWare,downloadController.addToDownloadController)
+
+// get user downld 
+
+routes.get('/recipe/download',jwtMiddleWare,downloadController.userDownloadedListController)
 
 // save recipe or colection 
 
