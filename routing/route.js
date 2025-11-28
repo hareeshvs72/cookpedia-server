@@ -5,6 +5,7 @@ const userController = require('../controllers/userController')
 const jwtMiddleWare = require("../middleWare/jwtMiddleWare")
 const downloadController = require('../controllers/downloadController')
 const saveRecipeController = require('../controllers/saveRecipeController')
+const feedbackController = require('../controllers/feedbackController')
 // --------------------------- user --------------------------------
 // register 
 
@@ -47,5 +48,18 @@ routes.get('/recipes/save',jwtMiddleWare,saveRecipeController.getAllUserSaveReci
 // delet recipe
 
 routes.delete('/recipes/:id/remove',jwtMiddleWare,saveRecipeController.deleteRecipeController)
+
+
+//------------------------------- feed backs -------------------------------
+
+// add feedback
+routes.post('/user/feedback',feedbackController.addToFeedback)
+
+// getfeedback 
+
+routes.get('/get/feedback',feedbackController.getAllFeedbacks)
+
+
+
 
 module.exports = routes
