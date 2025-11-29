@@ -6,6 +6,7 @@ const jwtMiddleWare = require("../middleWare/jwtMiddleWare")
 const downloadController = require('../controllers/downloadController')
 const saveRecipeController = require('../controllers/saveRecipeController')
 const feedbackController = require('../controllers/feedbackController')
+const adminMiddleware = require("../middleWare/adminJwtMiddleware")
 // --------------------------- user --------------------------------
 // register 
 
@@ -13,6 +14,11 @@ routes.post('/register',userController.registerController)
 
 // login 
 routes.post('/login',userController.loginController)
+
+// get all user
+routes.get('/users',adminMiddleware,userController.getAllUsersController)
+
+
 
 // update user profile
 
@@ -49,6 +55,12 @@ routes.get('/recipes/save',jwtMiddleWare,saveRecipeController.getAllUserSaveReci
 
 routes.delete('/recipes/:id/remove',jwtMiddleWare,saveRecipeController.deleteRecipeController)
 
+// get all downloads  - admin 
+
+routes.get('/download',adminMiddleware,downloadController.getAllDownloadedListController)
+
+
+
 
 //------------------------------- feed backs -------------------------------
 
@@ -59,6 +71,13 @@ routes.post('/user/feedback',feedbackController.addToFeedback)
 
 routes.get('/get/feedback',feedbackController.getAllFeedbacks)
 
+// get all feedback - admin
+
+routes.get('/feedback',adminMiddleware,feedbackController.getAllFeedBackListController)
+
+// updat feedback status - admin
+
+routes.get('/feedback/:id/edit',adminMiddleware,feedbackController.updateStatusController)
 
 
 

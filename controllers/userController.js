@@ -86,3 +86,16 @@ exports.updateUSerController = async (req, res) => {
     }
 
 }
+
+// get all user
+
+exports.getAllUsersController = async (req,res)=>{
+    console.log("inside getAllUsersController");
+    try { 
+        const allUser = await users.find({role:{$ne:"admin"}})
+        res.status(200).json(allUser)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+    
+}
