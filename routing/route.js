@@ -36,6 +36,21 @@ routes.get('/recipes/:id/view',jwtMiddleWare,recipeController.viewRecipeControll
 
 routes.get('/related-recipes',jwtMiddleWare,recipeController.relatedRecipesController)
 
+// addd recipe controller 
+
+routes.post('/add/recipe',adminMiddleware,recipeController.addRecipeController)
+
+// remove recipe
+
+routes.delete('/recipe/:id',adminMiddleware,recipeController.removeRecipeController)
+
+// update recipe
+
+routes.put('/recipe/:id/update',adminMiddleware,recipeController.updateRecipeController)
+
+
+
+
 // ----------------------------download -------------------------------
 
 routes.put('/recipes/:id/download',jwtMiddleWare,downloadController.addToDownloadController)
